@@ -1,0 +1,17 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<div class="input-group">
+<input type="file" class="container1" (change)="changeListener($event.target.files)">
+</div>
+<div class="input-group container2">
+    <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
+    <input type="text" class="form-control" name="searchString" placeholder="Issue count to filter..." [(ngModel)]="searchString">
+</div>
+<table mdbTable striped="true" class="table">
+    <tr>
+        <th *ngFor="let field of header">{{field}}</th>       
+    </tr>    
+    <tr *ngFor="let issue of final | filter : 'Issue count' : searchString; let i = index">
+        <td *ngFor="let field of header">{{issue[field]}}</td>
+    </tr>
+</table>
+ 
